@@ -1,104 +1,131 @@
-# 35B + Jev 鈥?RL post-training and decision-model reranking for Codex CLI on Terminal-Bench 2
+# 35B + Jev
 
-Two ways to make a small open model better on Terminal-Bench 2, measured with a
-real harness (Harbor + Codex CLI + a task's own verifier):
+**RL post-training with a decision-model-shaped reward, and best-of-k reranking, for Codex CLI on Terminal-Bench 2.**
+Qwen3.6-35B-A3B as the agent · Torchcast Decision 31B (Jev-class) as the judge · Harbor + Codex CLI as the harness.
 
-1. **RL post-training with a decision-model-shaped reward.** Qwen3.6-35B-A3B is
-   trained with GRPO on polyglot tasks; a Torchcast Decision 31B (Jev-class) model
-   scores every rollout with `P(solves)`, turning the verifier's 0/1 into a shaped
-   reward. On a held-out polyglot split this moved pass rate **25.0% 鈫?62.5%**
-   (16 episodes: 8 tasks 脳 2 rollouts) 鈥?a large point estimate that is **not yet
-   statistically significant** (sign test p 鈮?0.22).
-2. **Reranking at inference, no training.** Sample k = 3 candidates per task and
-   keep the one the same decision model scores highest. Across 37 Terminal-Bench-2
-   tasks with the 35B: **31.5% 鈫?37.8%** (**+6.3 pt**, 95% CI 0.0 to +13.5, 3脳 cost);
-   on a balanced 24-task subset **+11.1 pt (95% CI +2.8 to +20.8)**.
+<p>
+<img alt="status" src="https://img.shields.io/badge/status-research%20preview-blue">
+<img alt="tasks" src="https://img.shields.io/badge/benchmark-Terminal--Bench%202-informational">
+<img alt="serving" src="https://img.shields.io/badge/serving-Modal%20A100--80GB-lightgrey">
+</p>
 
 ![Jev in the loop](docs/figures/jev_flow.webp)
 
+## TL;DR
+
+| | Result | Verdict |
+|---|---|---|
+| **Base model swap** 9B → 35B-A3B, 37 TB2 tasks | 10.8% → **32.4%**, paired **+21.6 pt** (95% CI +8.1 to +36.5) | **significant** |
+| **Reranking** k=3 with the decision model, 24 tasks | **+11.1 pt** (95% CI +2.8 to +20.8) | **significant** |
+| **Reranking**, all 37 tasks | **+6.3 pt** (95% CI 0.0 to +13.5), 3× cost | marginal |
+| **Jev-shaped GRPO** on 35B, held-out polyglot | 25.0% → **62.5%** (16 episodes) | **point estimate, not significant** (p≈0.22) |
+| **RL transfer** to TB2 | 4/10 vs base 3/10, 5 trials unusable | **not measured** |
+
 ![RL result](docs/figures/jev_rl.webp)
 
-## What is actually established
+## How to read these numbers
 
-| Claim | Number | Status |
-|---|---|---|
-| Base model swap 9B 鈫?35B-A3B, same harness, 37 TB2 tasks | **10.8% 鈫?32.4%**, paired **+21.6 pt** (95% CI +8.1 to +36.5) | significant |
-| Reranking with the decision model, 24 tasks 脳 3 candidates | **+11.1 pt** (95% CI +2.8 to +20.8) | significant |
-| Reranking, all 37 tasks 脳 3 candidates | **+6.3 pt** (95% CI 0.0 to +13.5) | marginal |
-| Jev-shaped GRPO on 35B, held-out polyglot (16 episodes) | **25.0% 鈫?62.5%** | **not significant** (n=8 tasks) |
-| Same checkpoint transferred to TB2 (10 tasks) | 4/10 vs base 3/10, 5 trials unusable | **not measured** |
+* The evaluation resolves about **7.6 points** at 80% power on 37 tasks
+  (`eval/noise_band.py`), and 31 of those 37 tasks are never solved by the small
+  model — the addressable headroom on that benchmark is roughly 10-15 points.
+* A **significant** row means the paired confidence interval clears zero *and*
+  clears that resolution floor.
+* The RL row is a **direction, not a result**: 320 rollouts, 8 training tasks,
+  16 held-out episodes. It needs roughly 4× more rollouts and a larger held-out
+  split before "+37.5 pt" can be quoted.
+* The reward shaping is **not** the whole story. On-policy the judge separates
+  passes from failures with AUC **0.72** (0.85 off-policy), so this is
+  *Jev-shaped GRPO*, not "Jev makes the model smarter".
 
-The evaluation itself resolves about **7.6 points** at 80% power on 37 tasks, and
-31 of those 37 tasks are never solved by the small model, so the addressable
-headroom on that benchmark is roughly 10鈥?5 points. Anything below ~8 pt cannot be
-confirmed here.
+## Contents
+
+- [Why this repo exists](#why-this-repo-exists)
+- [Architecture](#architecture)
+- [What is in the box](#what-is-in-the-box)
+- [Reproduce](#reproduce)
+- [Results in detail](#results-in-detail)
+- [Limitations, stated plainly](#limitations-stated-plainly)
+- [Costs](#costs)
+
+## Why this repo exists
+
+Small open models driven by Codex CLI fail on Terminal-Bench 2 in two distinct
+ways: they cannot solve the task, and they cannot even *act* reliably (text-form
+tool calls, rejected tools, crashed agents). This repository is an attempt to fix
+both without renting a datacenter:
+
+1. **Make the agent stronger** — RL-post-train it, with a judge that turns the
+   verifier's sparse 0/1 into a shaped reward.
+2. **Make the output better without training** — sample k candidates and let the
+   same judge pick.
+
+Both were measured against the same harness, the same task subsets, and a
+pre-registered decision rule (`config/queue_rerank_hard.json`).
 
 ## Architecture
 
 ```
-Codex CLI 鈹€鈹€/v1/responses鈹€鈹€鈻?LiteLLM (Modal) 鈹€鈹€/v1/chat/completions鈹€鈹€鈻?Tinker
-    鈹?                         protocol bridge                        Qwen3.6-35B-A3B
-    鈹斺攢鈹€鈻?Modal sandbox (Terminal-Bench task) 鈹€鈹€鈻?task verifier 鈹€鈹€鈻?0/1
+Codex CLI --/v1/responses--> LiteLLM (Modal) --/v1/chat/completions--> Tinker
+    |                          protocol bridge                        Qwen3.6-35B-A3B
+    +--> Modal sandbox (Terminal-Bench task) --> task verifier --> 0/1
 ```
 
-Three things had to be built because the off-the-shelf path does not exist:
+Three pieces exist because the off-the-shelf path does not:
 
-* **Codex CLI dropped `wire_api = "chat"`** (openai/codex#7782) and now speaks only
-  the Responses API, while Tinker serves only `/chat/completions`.
-  `deploy/litellm_modal.py` bridges the two (`custom_openai/` + `mode: chat`) and
-  preserves function calls.
-* **RL training cannot go through Codex**: GRPO needs the sampled tokens and their
-  logprobs. `rl/loop.py` + `rl/bridge.py` run their own shell-agent loop against
-  Tinker's `SamplingClient` and a Modal sandbox, so Codex is used only for
-  evaluation, never for training.
-* **The decision model needed a gateway**: the bundled `torchcast_decision` server
-  answers `/health` but hangs on POST when exposed directly through Modal's proxy.
-  `deploy/torchcast_diag.py` shows the same POST returning in 0.10 s on loopback;
-  `deploy/torchcast_gateway.py` (FastAPI, 92 ms) is the fix.
+* **Codex CLI dropped `wire_api = "chat"`** ([openai/codex#7782](https://github.com/openai/codex/discussions/7782))
+  and now speaks only the Responses API, while Tinker serves only
+  `/chat/completions`. `deploy/litellm_modal.py` bridges the two
+  (`custom_openai/` + `mode: chat`) and preserves function calls.
+* **RL cannot go through Codex**: GRPO needs sampled tokens and their logprobs.
+  `rl/loop.py` + `rl/bridge.py` run their own shell-agent loop against Tinker's
+  `SamplingClient` and a Modal sandbox. Codex is used for evaluation only.
+* **The decision model needed a gateway**: the bundled `torchcast_decision`
+  server answers `/health` but hangs on POST through Modal's proxy.
+  `deploy/torchcast_diag.py` shows the same POST returning in **0.10 s** on
+  loopback; `deploy/torchcast_gateway.py` (FastAPI, 92 ms) is the fix.
 
-## Repo layout
+## What is in the box
 
 ```
-rl/     training and rollout code
-        train_jev.py      Jev-shaped GRPO (the RL experiment)
-        train_probe.py    plain GRPO on the verifier reward (baseline)
-        sft.py            rejection-sampling SFT (the negative experiment)
-        loop.py           rollout -> group advantage -> Tinker Datum
-        bridge.py         task <-> RL env (tool schema, parsing, grading)
-        envs.py           Modal sandbox backend
-        screen.py         find tasks whose base pass rate is learnable
-        eval_ckpt.py      score a checkpoint on a fixed task list
-        analyze_shaping.py  did P(solves) carry information on-policy?
-eval/   measurement
-        run_eval.py       Harbor runner + pass@1 / pass@k + results.tsv ledger
-        noise_band.py     how large an effect this evaluation can even resolve
-        paired_compare.py paired comparison of two runs on shared tasks
-        jev_score.py      decision-model scores for existing trials
-        jev_auc.py        does P(solves) separate passes from failures
-        rerank_eval.py    best-of-k reranking metrics
-        policy_search.py  offline search over selection rules
-        calibrate_threshold.py  accept-threshold sweep
-        feasibility.py    go / adjust / pivot judge with pre-registered rules
-        autoresearch.py   queue driver: run experiments, keep the best
-deploy/ Modal deployments (protocol bridge, 31B server, gateway, diagnostics)
-config/ Codex provider configs, the tool-contract prompt, a pre-registered queue
-docs/   analysis, data notes, and the JSON numbers behind every table
+rl/      training and rollouts
+         train_jev.py        Jev-shaped GRPO (the RL experiment)
+         train_probe.py      plain GRPO on the verifier reward (baseline)
+         sft.py              rejection-sampling SFT (the negative experiment)
+         loop.py             rollout -> group advantage -> Tinker Datum
+         bridge.py           task <-> RL env (tool schema, parsing, grading)
+         envs.py             Modal sandbox backend
+         screen.py           find tasks whose base pass rate is learnable
+         eval_ckpt.py        score a checkpoint on a fixed task list
+         analyze_shaping.py  did P(solves) carry information on-policy?
+eval/    measurement
+         run_eval.py         Harbor runner + pass@1/pass@k + results.tsv ledger
+         noise_band.py       how large an effect this evaluation can resolve
+         paired_compare.py   paired comparison of two runs on shared tasks
+         jev_score.py        decision-model scores for existing trials
+         jev_auc.py          does P(solves) separate passes from failures
+         rerank_eval.py      best-of-k reranking metrics
+         policy_search.py    offline search over selection rules
+         calibrate_threshold.py  accept-threshold sweep
+         feasibility.py      go / adjust / pivot judge with pre-registered rules
+         autoresearch.py     queue driver: run experiments, keep the best
+deploy/  Modal deployments (bridge, 31B server, gateway, diagnostics)
+config/  Codex provider configs, tool-contract prompt, pre-registered queue
+docs/    analysis, data notes, figures, and the JSON behind every table
 ```
 
 ## Reproduce
 
 ```bash
 # 0) environments
-pip install "tinker" "transformers" "modal" "harbor[modal]"
-export TINKER_API_KEY=...  LITELLM_API_KEY=...   # see deploy/
-python -c "import harbor" && harbor --version    # 0.26.0 used here
+pip install tinker transformers modal "harbor[modal]"   # harbor 0.26.0 used here
+export TINKER_API_KEY=...  LITELLM_API_KEY=...
 
 # 1) deploy the bridge and the decision model
 modal secret create tinker-secrets TINKER_API_KEY=$TINKER_API_KEY LITELLM_API_KEY=$LITELLM_API_KEY
-modal deploy deploy/litellm_modal.py
-modal deploy deploy/torchcast_modal.py
+modal deploy deploy/litellm_modal.py       # Responses <-> chat bridge
+modal deploy deploy/torchcast_modal.py     # Torchcast Decision 31B on A100-80GB
 
-# 2) evaluate any model on the task subset (writes results.tsv)
+# 2) evaluate a model on a task subset (writes one row to results.tsv)
 python eval/run_eval.py --tag qwen36 --model qwen36 \
   --codex-config config/codex_tinker_litellm.toml \
   --tasks eval/ceiling10.txt --k 1 --concurrency 5 \
@@ -117,27 +144,56 @@ python rl/screen.py --tasks eval/holdout8_ext.txt --group 2 \
 python rl/analyze_shaping.py --ckpt rl/jev_rl_ckpt.json
 ```
 
-Every number in this README is reproduced by the JSON under `docs/` and the
-`results.tsv` ledger; `jobs/` (the raw trial logs, ~465 MB) is not committed.
+## Results in detail
+
+**Base model swap** (`eval/paired_compare.py`, 37 shared tasks):
+
+| | pass@1 |
+|---|---|
+| Qwen3.5-9B | 10.8% |
+| Qwen3.6-35B-A3B | **32.4%** |
+| paired delta | **+21.6 pt**, 95% CI **[+8.1, +36.5]** |
+
+**Reranking, 37 tasks × 3 candidates** (`eval/rerank_eval.py`): pass@1 31.5% →
+selected **37.8%** (+6.3 pt, CI 0.0 to +13.5); pass@3 ceiling 43.2%, so the picker
+captures **54%** of the headroom. On the balanced 24-task subset: **+11.1 pt**
+(CI +2.8 to +20.8), of which **+8.3 pt** comes from selection rather than extra
+sampling.
+
+**Jev-shaped GRPO**, held-out polyglot (8 tasks × 2 rollouts):
+
+| | passed |
+|---|---|
+| 35B base | 4/16 = 25.0% |
+| + Jev-RL (batch 30) | 9/16 = 56.3% |
+| + Jev-RL (final) | **10/16 = 62.5%** |
+
+Five tasks improved, two unchanged, one returned to baseline. Sign test on the six
+discordant tasks: p ≈ 0.22.
 
 ## Limitations, stated plainly
 
-* **RL result is a signal, not a result.** 320 rollouts, 8 training tasks, 16
-  held-out episodes. It needs ~4脳 more rollouts and a larger held-out split
-  before the +37.5 pt can be quoted as anything but a point estimate.
-* **The reward shaping is not the whole story.** On-policy, the decision
-  model separates passes from failures with AUC **0.72** (vs 0.85 off-policy), so
-  this is best described as *Jev-shaped GRPO*, not "Jev makes the model smarter".
-* **Reranking costs 3脳 inference** and its full-set confidence interval touches
-  zero. No threshold or margin rule beat plain argmax (`docs/policy_search.json`).
-* **Evaluation resolution is ~7.6 pt**; 31/37 TB2 tasks are a hard floor for the
-  9B, which bounds what any training method can show there.
-* **Plenty of trials died on harness defects**, not model behaviour: Codex's
-  `apply_patch` is rejected for non-OpenAI providers, its tool-name contract is
-  easy to get wrong, and `code-from-image` returns a persistent upstream 400.
-  Those trials score 0 and depress every number above.
+* **The RL result is a signal, not a result.** 320 rollouts / 2,860 decision
+  points; a normal post-training run is 10^4-10^5 rollouts.
+* **The evaluation is coarse.** ~7.6 pt resolution; 31/37 TB2 tasks are a hard
+  floor for the 9B, which caps what any training method can show there.
+* **Reranking costs 3× inference** and its full-set CI touches zero. No threshold
+  or margin rule beat plain argmax (`docs/policy_search.json`).
+* **Many trials died on harness defects, not model behaviour**: Codex rejects
+  `apply_patch` for non-OpenAI providers, the tool-name contract is easy to get
+  wrong, and `code-from-image` returns a persistent upstream 400. Those trials
+  score 0 and depress every number above.
+* **Known bug, unfixed**: a rollout's `asyncio.wait_for` timeout does not fire
+  because `envs.ModalTask` uses blocking Modal calls and blocks the event loop.
+  Fix: `sandbox.exec.aio`. This is why runs stalled after 4-6 batches until
+  `--save-every` was added.
 
-## Costs (this work)
+## Costs
 
-Tinker 鈮?$55 (training + evaluation tokens), Modal 鈮?$10 (CPU sandboxes, one
-A100-80GB for the decision model), total 鈮?$65.
+Tinker ≈ $55 (training + evaluation tokens) · Modal ≈ $10 (CPU sandboxes plus one
+A100-80GB for the decision model) · **≈ $65 total**.
+
+## Raw material
+
+`jobs/` (≈465 MB of per-trial logs and verifier output) is not committed. Every
+table above is reproducible from the JSON in `docs/` and from `results.tsv`.
