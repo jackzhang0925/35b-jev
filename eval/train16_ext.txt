@@ -1,0 +1,16 @@
+polyglot_python_transpose
+polyglot_python_proverb
+polyglot_python_pig-latin
+polyglot_python_list-ops
+polyglot_python_robot-name
+polyglot_python_grade-school
+polyglot_python_bottle-song
+polyglot_python_grep
+polyglot_python_dominoes
+polyglot_python_variable-length-quantity
+polyglot_python_book-store
+polyglot_python_affine-cipher
+polyglot_go_say
+polyglot_go_crypto-square
+polyglot_go_kindergarten-garden
+polyglot_go_simple-linked-list

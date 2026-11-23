@@ -1,0 +1,81 @@
+{
+  "band": [
+    0.25,
+    0.75
+  ],
+  "rows": [
+    {
+      "task": "polyglot_python_zipper",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0
+      ],
+      "seconds": 37.8
+    },
+    {
+      "task": "polyglot_python_scale-generator",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0
+      ],
+      "seconds": 51.7
+    },
+    {
+      "task": "polyglot_python_hangman",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0
+      ],
+      "seconds": 44.8
+    },
+    {
+      "task": "polyglot_python_dot-dsl",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0
+      ],
+      "seconds": 33.1
+    },
+    {
+      "task": "polyglot_python_two-bucket",
+      "rate": 1.0,
+      "rewards": [
+        1.0,
+        1.0
+      ],
+      "seconds": 39.5
+    },
+    {
+      "task": "polyglot_python_tree-building",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0
+      ],
+      "seconds": 46.9
+    },
+    {
+      "task": "polyglot_go_dnd-character",
+      "rate": 1.0,
+      "rewards": [
+        1.0,
+        1.0
+      ],
+      "seconds": 40.2
+    },
+    {
+      "task": "polyglot_go_wordy",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0
+      ],
+      "seconds": 32.0
+    }
+  ],
+  "keep": []
+}

@@ -1,0 +1,194 @@
+{
+  "band": [
+    0.25,
+    0.75
+  ],
+  "rows": [
+    {
+      "task": "polyglot_go_alphametics",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 121.9
+    },
+    {
+      "task": "polyglot_go_beer-song",
+      "rate": 0.25,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seconds": 70.3
+    },
+    {
+      "task": "polyglot_go_book-store",
+      "rate": 0.25,
+      "rewards": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 59.9
+    },
+    {
+      "task": "polyglot_go_connect",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 53.9
+    },
+    {
+      "task": "polyglot_go_dominoes",
+      "rate": 0.25,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seconds": 46.9
+    },
+    {
+      "task": "polyglot_go_error-handling",
+      "rate": 0.25,
+      "rewards": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 50.2
+    },
+    {
+      "task": "polyglot_go_forth",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 57.7
+    },
+    {
+      "task": "polyglot_go_kindergarten-garden",
+      "rate": 0.5,
+      "rewards": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "seconds": 71.8
+    },
+    {
+      "task": "polyglot_go_matrix",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 49.8
+    },
+    {
+      "task": "polyglot_go_paasio",
+      "rate": 0.25,
+      "rewards": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "seconds": 56.6
+    },
+    {
+      "task": "polyglot_go_crypto-square",
+      "rate": 1.0,
+      "rewards": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "seconds": 51.1
+    },
+    {
+      "task": "polyglot_go_hexadecimal",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 60.7
+    },
+    {
+      "task": "polyglot_go_octal",
+      "rate": 0.0,
+      "rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seconds": 50.5
+    },
+    {
+      "task": "polyglot_go_pig-latin",
+      "rate": 0.75,
+      "rewards": [
+        0.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "seconds": 68.3
+    },
+    {
+      "task": "polyglot_go_simple-linked-list",
+      "rate": 0.75,
+      "rewards": [
+        1.0,
+        1.0,
+        1.0,
+        0.0
+      ],
+      "seconds": 46.6
+    },
+    {
+      "task": "polyglot_python_beer-song",
+      "rate": 1.0,
+      "rewards": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "seconds": 42.2
+    }
+  ],
+  "keep": [
+    "polyglot_go_beer-song",
+    "polyglot_go_book-store",
+    "polyglot_go_dominoes",
+    "polyglot_go_error-handling",
+    "polyglot_go_kindergarten-garden",
+    "polyglot_go_paasio",
+    "polyglot_go_pig-latin",
+    "polyglot_go_simple-linked-list"
+  ]
+}

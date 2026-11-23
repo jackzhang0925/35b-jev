@@ -1,0 +1,8 @@
+polyglot_go_beer-song
+polyglot_go_book-store
+polyglot_go_dominoes
+polyglot_go_error-handling
+polyglot_go_kindergarten-garden
+polyglot_go_paasio
+polyglot_go_pig-latin
+polyglot_go_simple-linked-list

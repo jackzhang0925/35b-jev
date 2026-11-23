@@ -1,0 +1,230 @@
+{
+  "tasks": 24,
+  "pass1": 0.4722222222222222,
+  "passk": 0.625,
+  "selected": 0.5833333333333334,
+  "first": 0.5,
+  "delta": 0.11111111111111116,
+  "ci95": [
+    0.02777777777777778,
+    0.20833333333333337
+  ],
+  "per_task": [
+    {
+      "task": "adaptive-rejection-sampler",
+      "n": 3,
+      "pass1": 0.3333333333333333,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 0.0,
+      "picked_score": 0.8481624126434326
+    },
+    {
+      "task": "break-filter-js-from-html",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.07056459784507751
+    },
+    {
+      "task": "build-cython-ext",
+      "n": 3,
+      "pass1": 0.3333333333333333,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.9585655927658081
+    },
+    {
+      "task": "build-pov-ray",
+      "n": 3,
+      "pass1": 0.6666666666666666,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 0.0,
+      "picked_score": 0.9477959275245667
+    },
+    {
+      "task": "code-from-image",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.014267709106206894
+    },
+    {
+      "task": "constraints-scheduling",
+      "n": 3,
+      "pass1": 1.0,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.9025294780731201
+    },
+    {
+      "task": "distribution-search",
+      "n": 3,
+      "pass1": 1.0,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.97906094789505
+    },
+    {
+      "task": "extract-elf",
+      "n": 3,
+      "pass1": 0.6666666666666666,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 0.0,
+      "picked_score": 0.9604781866073608
+    },
+    {
+      "task": "feal-linear-cryptanalysis",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.014639259316027164
+    },
+    {
+      "task": "filter-js-from-html",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.9803104996681213
+    },
+    {
+      "task": "fix-code-vulnerability",
+      "n": 3,
+      "pass1": 1.0,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.978024959564209
+    },
+    {
+      "task": "fix-git",
+      "n": 3,
+      "pass1": 1.0,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.9706425070762634
+    },
+    {
+      "task": "git-leak-recovery",
+      "n": 3,
+      "pass1": 1.0,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.9850246906280518
+    },
+    {
+      "task": "modernize-scientific-stack",
+      "n": 3,
+      "pass1": 1.0,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.9843462705612183
+    },
+    {
+      "task": "openssl-selfsigned-cert",
+      "n": 3,
+      "pass1": 0.6666666666666666,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.968626081943512
+    },
+    {
+      "task": "overfull-hbox",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.9518555998802185
+    },
+    {
+      "task": "path-tracing-reverse",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.05544894561171532
+    },
+    {
+      "task": "pypi-server",
+      "n": 3,
+      "pass1": 0.6666666666666666,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.9503903388977051
+    },
+    {
+      "task": "rstan-to-pystan",
+      "n": 3,
+      "pass1": 0.6666666666666666,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.9626936316490173
+    },
+    {
+      "task": "sparql-university",
+      "n": 3,
+      "pass1": 0.3333333333333333,
+      "passk": 1.0,
+      "selected": 0.0,
+      "first": 1.0,
+      "picked_score": 0.9799817800521851
+    },
+    {
+      "task": "torch-tensor-parallelism",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.9179333448410034
+    },
+    {
+      "task": "tune-mjcf",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.05203688517212868
+    },
+    {
+      "task": "vulnerable-secret",
+      "n": 3,
+      "pass1": 1.0,
+      "passk": 1.0,
+      "selected": 1.0,
+      "first": 1.0,
+      "picked_score": 0.8822183012962341
+    },
+    {
+      "task": "winning-avg-corewars",
+      "n": 3,
+      "pass1": 0.0,
+      "passk": 0.0,
+      "selected": 0.0,
+      "first": 0.0,
+      "picked_score": 0.028218265622854233
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+# Codex CLI -> LiteLLM (Modal) -> Tinker, the RL checkpoint (qwen36rl).
+#
+# Model group `qwen36rl` in deploy/litellm_modal.py maps to
+#   Qwen/Qwen3.6-35B-A3B;tinker://.../sampler_weights/jev-final-...
+# Same bridge as the other configs; UTF-8 without a BOM.
+
+model_provider = "litellm"
+model = "qwen36rl"
+model_context_window = 65536
+
+[model_providers.litellm]
+name = "LiteLLM -> Tinker"
+base_url = "https://jackzhang0356--qwen9b-litellm-serve.us-east.modal.run/v1"
+wire_api = "responses"
+env_key = "LITELLM_API_KEY"
+request_max_retries = 4
+stream_max_retries = 4
+stream_idle_timeout_ms = 300000
+
+[projects."/app"]
+trust_level = "trusted"

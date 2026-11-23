@@ -1,0 +1,25 @@
+# Codex CLI -> LiteLLM (Modal) -> Tinker, Qwen3.5-9B.
+#
+# Codex >=0.171 dropped `wire_api = "chat"` (openai/codex#7782) and always speaks
+# the Responses API; Tinker only serves /chat/completions. The LiteLLM proxy in
+# deploy/litellm_modal.py bridges /v1/responses -> /v1/chat/completions, keeps
+# function calls (`function_call` output items), and holds the Tinker key
+# server-side. Codex only ever sees LITELLM_API_KEY.
+#
+# Regenerate the base_url after `modal deploy deploy/litellm_modal.py`.
+
+model_provider = "litellm"
+model = "qwen9b"
+model_context_window = 65536
+
+[model_providers.litellm]
+name = "LiteLLM -> Tinker"
+base_url = "https://jackzhang0356--qwen9b-litellm-serve.us-east.modal.run/v1"
+wire_api = "responses"
+env_key = "LITELLM_API_KEY"
+request_max_retries = 4
+stream_max_retries = 4
+stream_idle_timeout_ms = 300000
+
+[projects."/app"]
+trust_level = "trusted"

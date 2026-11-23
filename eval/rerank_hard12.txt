@@ -1,0 +1,12 @@
+adaptive-rejection-sampler
+break-filter-js-from-html
+build-cython-ext
+build-pov-ray
+code-from-image
+feal-linear-cryptanalysis
+filter-js-from-html
+overfull-hbox
+path-tracing-reverse
+sparql-university
+tune-mjcf
+winning-avg-corewars

@@ -1,0 +1,16 @@
+# environments and secrets
+.venv/
+.env
+.litellm_master_key
+*.pyc
+__pycache__/
+
+# run artifacts (hundreds of MB of trial logs)
+jobs/
+data/
+archive/
+rl/*.log
+jobs/*.log
+
+# checkpoints live on Tinker; only the pointer JSON is committed
+tinker://

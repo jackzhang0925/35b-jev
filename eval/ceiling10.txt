@@ -1,0 +1,10 @@
+terminal-bench/adaptive-rejection-sampler
+terminal-bench/break-filter-js-from-html
+terminal-bench/build-cython-ext
+terminal-bench/build-pov-ray
+terminal-bench/code-from-image
+terminal-bench/constraints-scheduling
+terminal-bench/distribution-search
+terminal-bench/dna-assembly
+terminal-bench/dna-insert
+terminal-bench/extract-elf

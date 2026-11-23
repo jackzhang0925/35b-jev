@@ -1,0 +1,20 @@
+[
+  {
+    "experiment": "RERANK-HARD12",
+    "hypothesis": "Reranking can only capture the gap between pass@k and pass@1. On the 25 tasks Qwen3.6-35B-A3B never solved, that gap is small, so Jev selection should add little there. If the gap is >=8pt and selection captures most of it, reranking pays for its 3x inference; if the gap is <5pt, reranking cannot pay for itself on this distribution.",
+    "design": {
+      "tasks": "eval/rerank_hard12.txt (12 of the 25 tasks the 35B failed, seed 11)",
+      "candidates_per_task": 3,
+      "trials": 36,
+      "runner": "harbor run -k 3 via eval/run_eval.py",
+      "judge": "torchcast-decision-31b-v1.0 via deploy/torchcast_modal.py gateway"
+    },
+    "metrics": ["pass@1", "pass@k", "selected", "first", "delta", "delta_ci95"],
+    "decision_rule": {
+      "keep": "pass@k - pass@1 >= 0.08 AND selected >= pass@k - 0.05",
+      "drop": "pass@k - pass@1 < 0.05 (no headroom to capture)",
+      "ambiguous": "otherwise"
+    },
+    "cost_estimate_usd": 15
+  }
+]

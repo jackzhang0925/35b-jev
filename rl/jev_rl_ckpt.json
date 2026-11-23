@@ -1,0 +1,1371 @@
+{
+  "ckpt": "tinker://c970ccd4-f1c3-55e9-b565-e178feb3837b:train:0/sampler_weights/jev-final-1795297281",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "batches": 40,
+  "group": 4,
+  "alpha": 0.3,
+  "rollouts": 320,
+  "datums": 2860,
+  "audit": [
+    {
+      "batch": 1,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        -0.147,
+        1.133,
+        0.126,
+        -0.093
+      ],
+      "p": [
+        0.011,
+        0.943,
+        0.919,
+        0.189
+      ]
+    },
+    {
+      "batch": 1,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        -0.145,
+        -0.147,
+        1.137,
+        0.103
+      ],
+      "p": [
+        0.017,
+        0.01,
+        0.957,
+        0.843
+      ]
+    },
+    {
+      "batch": 2,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        -0.09,
+        0.133,
+        1.09
+      ],
+      "p": [
+        0.801,
+        0.199,
+        0.944,
+        0.801
+      ]
+    },
+    {
+      "batch": 2,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        -0.147,
+        1.09,
+        -0.147,
+        -0.147
+      ],
+      "p": [
+        0.01,
+        0.801,
+        0.011,
+        0.009
+      ]
+    },
+    {
+      "batch": 3,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        0.879,
+        1.09,
+        -0.09,
+        0.877
+      ],
+      "p": [
+        0.098,
+        0.801,
+        0.199,
+        0.091
+      ]
+    },
+    {
+      "batch": 3,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        1.107,
+        0.092,
+        0.09,
+        1.11
+      ],
+      "p": [
+        0.858,
+        0.806,
+        0.801,
+        0.867
+      ]
+    },
+    {
+      "batch": 4,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        0.09,
+        0.09,
+        0.106
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.801,
+        0.852
+      ]
+    },
+    {
+      "batch": 4,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        0.0,
+        0.113,
+        1.09
+      ],
+      "p": [
+        0.801,
+        null,
+        0.876,
+        0.801
+      ]
+    },
+    {
+      "batch": 5,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        -0.138,
+        1.09,
+        -0.138
+      ],
+      "p": [
+        0.801,
+        0.039,
+        0.801,
+        0.04
+      ]
+    },
+    {
+      "batch": 5,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        1.136,
+        -0.147,
+        -0.146,
+        -0.147
+      ],
+      "p": [
+        0.954,
+        0.01,
+        0.012,
+        0.009
+      ]
+    },
+    {
+      "batch": 6,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        -0.09,
+        -0.14,
+        0.09
+      ],
+      "p": [
+        0.801,
+        0.199,
+        0.033,
+        0.801
+      ]
+    },
+    {
+      "batch": 6,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        -0.147,
+        -0.147,
+        -0.146
+      ],
+      "p": [
+        0.199,
+        0.009,
+        0.009,
+        0.013
+      ]
+    },
+    {
+      "batch": 7,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        1.09,
+        0.91,
+        1.139
+      ],
+      "p": [
+        0.199,
+        0.801,
+        0.199,
+        0.963
+      ]
+    },
+    {
+      "batch": 7,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        0.109,
+        0.107,
+        0.133,
+        0.111
+      ],
+      "p": [
+        0.862,
+        0.856,
+        0.942,
+        0.87
+      ]
+    },
+    {
+      "batch": 8,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        0.104,
+        -0.09,
+        0.119,
+        -0.143
+      ],
+      "p": [
+        0.847,
+        0.199,
+        0.897,
+        0.024
+      ]
+    },
+    {
+      "batch": 8,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        1.091,
+        1.09,
+        1.09,
+        1.09
+      ],
+      "p": [
+        0.802,
+        0.801,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "batch": 9,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        1.111,
+        1.131,
+        0.129,
+        -0.143
+      ],
+      "p": [
+        0.871,
+        0.936,
+        0.93,
+        0.023
+      ]
+    },
+    {
+      "batch": 9,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        1.124,
+        -0.147,
+        -0.147,
+        1.102
+      ],
+      "p": [
+        0.914,
+        0.009,
+        0.011,
+        0.839
+      ]
+    },
+    {
+      "batch": 10,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        0.09,
+        0.14,
+        0.135
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.967,
+        0.95
+      ]
+    },
+    {
+      "batch": 10,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        0.135,
+        0.09,
+        -0.147
+      ],
+      "p": [
+        0.801,
+        0.949,
+        0.801,
+        0.01
+      ]
+    },
+    {
+      "batch": 11,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        1.09,
+        1.101,
+        1.112
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.838,
+        0.874
+      ]
+    },
+    {
+      "batch": 11,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        0.092,
+        0.095,
+        0.097,
+        1.115
+      ],
+      "p": [
+        0.808,
+        0.817,
+        0.824,
+        0.883
+      ]
+    },
+    {
+      "batch": 12,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        -0.09,
+        0.122,
+        0.102
+      ],
+      "p": [
+        0.801,
+        0.199,
+        0.906,
+        0.84
+      ]
+    },
+    {
+      "batch": 12,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        0.0,
+        0.0,
+        1.09,
+        -0.09
+      ],
+      "p": [
+        null,
+        null,
+        0.801,
+        0.199
+      ]
+    },
+    {
+      "batch": 13,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        0.131,
+        1.14,
+        1.09
+      ],
+      "p": [
+        0.801,
+        0.936,
+        0.966,
+        0.801
+      ]
+    },
+    {
+      "batch": 13,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        -0.147,
+        1.129,
+        1.124,
+        1.128
+      ],
+      "p": [
+        0.01,
+        0.929,
+        0.914,
+        0.925
+      ]
+    },
+    {
+      "batch": 14,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        0.126,
+        0.09,
+        0.09
+      ],
+      "p": [
+        0.801,
+        0.919,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "batch": 14,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        -0.147,
+        0.133,
+        1.134,
+        -0.147
+      ],
+      "p": [
+        0.011,
+        0.942,
+        0.948,
+        0.012
+      ]
+    },
+    {
+      "batch": 15,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        1.123,
+        1.115,
+        0.0,
+        1.106
+      ],
+      "p": [
+        0.911,
+        0.884,
+        null,
+        0.853
+      ]
+    },
+    {
+      "batch": 15,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        0.118,
+        0.09,
+        1.112
+      ],
+      "p": [
+        0.801,
+        0.892,
+        0.801,
+        0.874
+      ]
+    },
+    {
+      "batch": 16,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        0.09,
+        0.09,
+        0.093
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.801,
+        0.81
+      ]
+    },
+    {
+      "batch": 16,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        0.09,
+        1.09,
+        1.131
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.801,
+        0.937
+      ]
+    },
+    {
+      "batch": 17,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        0.134,
+        1.14,
+        -0.09,
+        -0.09
+      ],
+      "p": [
+        0.946,
+        0.968,
+        0.199,
+        0.199
+      ]
+    },
+    {
+      "batch": 17,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        -0.135,
+        -0.147,
+        1.09,
+        -0.147
+      ],
+      "p": [
+        0.051,
+        0.011,
+        0.801,
+        0.011
+      ]
+    },
+    {
+      "batch": 18,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        0.134,
+        0.09,
+        0.09,
+        -0.093
+      ],
+      "p": [
+        0.948,
+        0.801,
+        0.801,
+        0.189
+      ]
+    },
+    {
+      "batch": 18,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        -0.146,
+        0.107,
+        0.09
+      ],
+      "p": [
+        0.801,
+        0.013,
+        0.856,
+        0.801
+      ]
+    },
+    {
+      "batch": 19,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        1.136,
+        1.142,
+        1.13,
+        1.09
+      ],
+      "p": [
+        0.954,
+        0.973,
+        0.933,
+        0.801
+      ]
+    },
+    {
+      "batch": 19,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        1.09,
+        0.105,
+        1.09
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.849,
+        0.801
+      ]
+    },
+    {
+      "batch": 20,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        0.09,
+        0.09,
+        0.09
+      ],
+      "p": [
+        0.199,
+        0.801,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "batch": 20,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        0.126,
+        1.117,
+        1.09
+      ],
+      "p": [
+        0.199,
+        0.922,
+        0.891,
+        0.801
+      ]
+    },
+    {
+      "batch": 21,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        -0.09,
+        1.09,
+        1.138
+      ],
+      "p": [
+        0.199,
+        0.199,
+        0.801,
+        0.961
+      ]
+    },
+    {
+      "batch": 21,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        1.127,
+        1.124,
+        1.127,
+        1.109
+      ],
+      "p": [
+        0.923,
+        0.914,
+        0.923,
+        0.863
+      ]
+    },
+    {
+      "batch": 22,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        0.091,
+        -0.09,
+        -0.14,
+        -0.138
+      ],
+      "p": [
+        0.802,
+        0.199,
+        0.032,
+        0.041
+      ]
+    },
+    {
+      "batch": 22,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        0.092,
+        1.128,
+        0.12,
+        -0.111
+      ],
+      "p": [
+        0.807,
+        0.927,
+        0.901,
+        0.131
+      ]
+    },
+    {
+      "batch": 23,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        0.91,
+        1.136,
+        0.91
+      ],
+      "p": [
+        0.801,
+        0.199,
+        0.952,
+        0.199
+      ]
+    },
+    {
+      "batch": 23,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        -0.09,
+        1.105,
+        1.09
+      ],
+      "p": [
+        0.801,
+        0.199,
+        0.851,
+        0.801
+      ]
+    },
+    {
+      "batch": 24,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        0.098,
+        0.09,
+        -0.115
+      ],
+      "p": [
+        0.199,
+        0.825,
+        0.801,
+        0.115
+      ]
+    },
+    {
+      "batch": 24,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        0.91,
+        1.09,
+        1.09,
+        -0.09
+      ],
+      "p": [
+        0.199,
+        0.801,
+        0.801,
+        0.199
+      ]
+    },
+    {
+      "batch": 25,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        0.109,
+        1.139,
+        1.138,
+        -0.09
+      ],
+      "p": [
+        0.862,
+        0.963,
+        0.961,
+        0.199
+      ]
+    },
+    {
+      "batch": 25,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        1.112,
+        -0.146,
+        1.102,
+        1.108
+      ],
+      "p": [
+        0.873,
+        0.013,
+        0.839,
+        0.861
+      ]
+    },
+    {
+      "batch": 26,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        -0.134,
+        -0.143,
+        0.132,
+        0.09
+      ],
+      "p": [
+        0.054,
+        0.024,
+        0.94,
+        0.801
+      ]
+    },
+    {
+      "batch": 26,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        0.115,
+        -0.146,
+        1.09,
+        1.117
+      ],
+      "p": [
+        0.883,
+        0.015,
+        0.801,
+        0.889
+      ]
+    },
+    {
+      "batch": 27,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        1.09,
+        1.128,
+        1.09
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.926,
+        0.801
+      ]
+    },
+    {
+      "batch": 27,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        -0.09,
+        1.1,
+        1.122
+      ],
+      "p": [
+        0.801,
+        0.199,
+        0.834,
+        0.907
+      ]
+    },
+    {
+      "batch": 28,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        0.11,
+        0.09,
+        0.0,
+        0.104
+      ],
+      "p": [
+        0.865,
+        0.801,
+        null,
+        0.847
+      ]
+    },
+    {
+      "batch": 28,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        -0.145,
+        1.136,
+        1.09,
+        1.09
+      ],
+      "p": [
+        0.016,
+        0.954,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "batch": 29,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        1.107,
+        0.91,
+        0.903
+      ],
+      "p": [
+        0.801,
+        0.857,
+        0.199,
+        0.178
+      ]
+    },
+    {
+      "batch": 29,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        1.135,
+        1.13,
+        1.136,
+        1.109
+      ],
+      "p": [
+        0.951,
+        0.933,
+        0.955,
+        0.864
+      ]
+    },
+    {
+      "batch": 30,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        -0.137,
+        0.138,
+        -0.09,
+        0.132
+      ],
+      "p": [
+        0.042,
+        0.961,
+        0.199,
+        0.941
+      ]
+    },
+    {
+      "batch": 30,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        -0.146,
+        1.09,
+        1.11,
+        0.09
+      ],
+      "p": [
+        0.012,
+        0.801,
+        0.866,
+        0.801
+      ]
+    },
+    {
+      "batch": 31,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        1.118,
+        -0.142,
+        1.09,
+        1.09
+      ],
+      "p": [
+        0.894,
+        0.027,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "batch": 31,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        1.09,
+        1.106,
+        0.882
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.854,
+        0.108
+      ]
+    },
+    {
+      "batch": 32,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        0.091,
+        0.09,
+        0.09
+      ],
+      "p": [
+        0.801,
+        0.804,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "batch": 32,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        0.0,
+        -0.116,
+        0.0,
+        1.12
+      ],
+      "p": [
+        null,
+        0.113,
+        null,
+        0.9
+      ]
+    },
+    {
+      "batch": 33,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        1.138,
+        1.09,
+        1.09,
+        1.111
+      ],
+      "p": [
+        0.96,
+        0.801,
+        0.801,
+        0.868
+      ]
+    },
+    {
+      "batch": 33,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        1.133,
+        1.138,
+        1.09,
+        1.134
+      ],
+      "p": [
+        0.943,
+        0.96,
+        0.801,
+        0.947
+      ]
+    },
+    {
+      "batch": 34,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        -0.09,
+        -0.142,
+        0.108
+      ],
+      "p": [
+        0.801,
+        0.199,
+        0.028,
+        0.86
+      ]
+    },
+    {
+      "batch": 34,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        1.125,
+        1.125,
+        1.138
+      ],
+      "p": [
+        0.199,
+        0.918,
+        0.917,
+        0.96
+      ]
+    },
+    {
+      "batch": 35,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        1.134,
+        0.91,
+        0.123,
+        1.117
+      ],
+      "p": [
+        0.946,
+        0.199,
+        0.91,
+        0.89
+      ]
+    },
+    {
+      "batch": 35,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        0.09,
+        0.91,
+        1.094
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.199,
+        0.812
+      ]
+    },
+    {
+      "batch": 36,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        0.112,
+        0.09,
+        -0.097,
+        0.132
+      ],
+      "p": [
+        0.875,
+        0.801,
+        0.178,
+        0.941
+      ]
+    },
+    {
+      "batch": 36,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        0.91,
+        0.0,
+        1.09
+      ],
+      "p": [
+        0.199,
+        0.199,
+        null,
+        0.801
+      ]
+    },
+    {
+      "batch": 37,
+      "task": "polyglot_go_dominoes",
+      "skipped": false,
+      "shaped": [
+        1.09,
+        1.09,
+        1.113,
+        1.09
+      ],
+      "p": [
+        0.801,
+        0.801,
+        0.877,
+        0.801
+      ]
+    },
+    {
+      "batch": 37,
+      "task": "polyglot_go_error-handling",
+      "skipped": false,
+      "shaped": [
+        1.122,
+        -0.146,
+        1.09,
+        -0.146
+      ],
+      "p": [
+        0.907,
+        0.013,
+        0.801,
+        0.012
+      ]
+    },
+    {
+      "batch": 38,
+      "task": "polyglot_go_kindergarten-garden",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        0.121,
+        0.122,
+        0.09
+      ],
+      "p": [
+        0.199,
+        0.905,
+        0.906,
+        0.801
+      ]
+    },
+    {
+      "batch": 38,
+      "task": "polyglot_go_paasio",
+      "skipped": false,
+      "shaped": [
+        1.131,
+        1.116,
+        -0.146,
+        1.126
+      ],
+      "p": [
+        0.936,
+        0.886,
+        0.012,
+        0.922
+      ]
+    },
+    {
+      "batch": 39,
+      "task": "polyglot_go_pig-latin",
+      "skipped": false,
+      "shaped": [
+        0.09,
+        1.12,
+        1.09,
+        1.139
+      ],
+      "p": [
+        0.801,
+        0.899,
+        0.801,
+        0.964
+      ]
+    },
+    {
+      "batch": 39,
+      "task": "polyglot_go_simple-linked-list",
+      "skipped": false,
+      "shaped": [
+        1.133,
+        1.09,
+        0.878,
+        1.09
+      ],
+      "p": [
+        0.945,
+        0.801,
+        0.094,
+        0.801
+      ]
+    },
+    {
+      "batch": 40,
+      "task": "polyglot_go_beer-song",
+      "skipped": false,
+      "shaped": [
+        -0.09,
+        -0.133,
+        0.09,
+        0.09
+      ],
+      "p": [
+        0.199,
+        0.058,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "batch": 40,
+      "task": "polyglot_go_book-store",
+      "skipped": false,
+      "shaped": [
+        0.91,
+        1.135,
+        1.09,
+        1.139
+      ],
+      "p": [
+        0.199,
+        0.95,
+        0.801,
+        0.963
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+polyglot_python_zipper
+polyglot_python_scale-generator
+polyglot_python_hangman
+polyglot_python_dot-dsl
+polyglot_python_two-bucket
+polyglot_python_tree-building
+polyglot_go_dnd-character
+polyglot_go_wordy

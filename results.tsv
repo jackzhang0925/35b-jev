@@ -1,0 +1,19 @@
+tag	date	one_variable	hypothesis	train_tokens	train_usd	eval_tasks	pass1	pass1_ci95	pass4	best_of4_equiv	usd_total	keep	note
+FT0	2026-11-20	plumbing smoke: codex -> tinker base	9B emits parseable tool calls through Harbor, verifier returns 0/1	0	0.5	2	-	-	-	-	0.5	pending	blocked on TINKER_API_KEY
+FT1	-	none: measure pass@1 vs pass@4 headroom	spread between pass@1 and pass@4 predicts RL headroom	0	9	24	-	-	-	-	9	pending	blocked on FT0
+FT2	-	10-batch RL probe, curriculum from pass@4>0 tasks	held-out gain >=5pt means the reward/env/hparams are sound	800000	9	6	-	-	-	-	9	pending	blocked on FT1
+FT0	2026-11-20T20:06Z	qwen9b	2	1	0.5000	0.5000	null	0	jobs\2026-11-20__14-59-17
+CEILING-oss120b	2026-11-20T20:37Z	oss120b	20	1	0.1500	0.1500	null	4	jobs\2026-11-20__15-07-24
+CEILING-oss120b	2026-11-20T20:41Z	oss120b	10	1	0.0000	0.0000	null	1	jobs\2026-11-20__15-37-54
+HARNESS-FIX	2026-11-20T21:01Z	qwen9b	3	1	0.3333	0.3333	null	1	jobs\2026-11-20__15-44-02
+CEIL2-oss120b-fixed	2026-11-20T21:05Z	oss120b	3	1	0.0000	0.0000	null	1	jobs\2026-11-20__16-02-08
+CEIL2-oss120b-fixed	2026-11-20T21:06Z	oss120b	10	1	0.1000	0.1000	null	0	jobs\2026-11-20__16-01-45
+PROMPT-V2	2026-11-20T21:34Z	qwen9b	3	1	0.3333	0.3333	null	1	jobs\2026-11-20__16-16-41
+TB2-base-fixed	2026-11-21T00:10Z	qwen9b	6	1	0.1667	0.1667	null	3	jobs\2026-11-20__18-56-11
+TB2-base-fixed	2026-11-21T00:11Z	qwen9b	10	1	0.2000	0.2000	null	3	jobs\2026-11-20__18-44-58
+AR-01-qwen36-10t	2026-11-21T00:21Z	qwen36	9	1	0.3333	0.3333	null	4	jobs\2026-11-20__18-56-11
+PAIRED-35B	2026-11-21T05:37Z	qwen36	37	1	0.3243	0.3243	null	10	jobs\2026-11-21__00-01-40
+RERANK-35B-k3	2026-11-21T16:59Z	qwen36	12	3	0.8056	0.9167	null	2	jobs\2026-11-21__11-36-52
+RERANK-REST13	2026-11-21T19:10Z	qwen36	13	3	0.0256	0.0769	null	22	jobs\2026-11-21__13-08-08
+RERANK-HARD12	2026-11-21T19:13Z	qwen36	13	3	0.0256	0.0769	null	22	jobs\2026-11-21__13-08-08
+TB2-RL-10	2026-11-21T22:41Z	qwen36rl	9	1	0.4444	0.4444	null	4	jobs\2026-11-21__16-50-43
